@@ -16,6 +16,7 @@ module.exports = {
         type: 'text/javascript',
         src: 'https://code.jquery.com/jquery-3.2.1.min.js'
       },
+      {type: 'text/javascript', src: '/md5.js'},
       {type: 'text/javascript', src: '/brainCloudClient.min.js'}
     ]
   },

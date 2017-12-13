@@ -70,7 +70,7 @@ export default {
       app.brainCloudWrapper.authenticateExternal(
         user.userId,
         this.accessToken,
-        'External',
+        'Login',
         true,
         (...args) => {
           console.log(args)
