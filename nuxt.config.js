@@ -12,8 +12,11 @@ module.exports = {
     link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
     script: [
       {type: 'text/javascript', src: '/quarters.min.js'},
-      {type: 'text/javascript', src: '/BrainCloudClient.js'},
-      {type: 'text/javascript', src: '/BrainCloudWrapper.js'}
+      {
+        type: 'text/javascript',
+        src: 'https://code.jquery.com/jquery-3.2.1.min.js'
+      },
+      {type: 'text/javascript', src: '/brainCloudClient.min.js'}
     ]
   },
 

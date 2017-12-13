@@ -26,6 +26,8 @@ import app from '~/plugins/app'
 export default {
   data() {
     return {
+      refreshToken: null,
+      accessToken: null,
       loading: false
     }
   },
@@ -42,6 +44,7 @@ export default {
             .setAuthCode(data.code)
             .then(response => {
               this.refreshToken = response.refresh_token
+              this.accessToken = response.access_token
               this.loading = false
 
               // refresh token
@@ -64,16 +67,25 @@ export default {
       this.$store.commit('user', user)
 
       // Call the script
-      window.brainCloudWrapper.GetBC().BrainCloudScript.RunScript(
-        'Login',
-        '{ "score": 100, "kills": 10 }',
-        () => {
-          // redirect
-          this.$router.push({name: 'index'})
-        },
-        () => {},
-        null
+      app.brainCloudWrapper.authenticateExternal(
+        user.userId,
+        this.accessToken,
+        'External',
+        true,
+        (...args) => {
+          console.log(args)
+        }
       )
+      // app.brainCloudClient.script.runScript(
+      //   'Login',
+      //   JSON.stringify({
+      //     accessToken: this.accessToken,
+      //     userId: user.userId
+      //   }),
+      //   (...args) => {
+      //     console.log(args)
+      //   }
+      // )
     }
   }
 }

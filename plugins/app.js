@@ -8,6 +8,14 @@ const quarterOptions = {
   apiURL: 'https://api.dev.pocketfulofquarters.com/v1/'
 }
 
+window.brainCloudClient.initialize(
+  '11754',
+  '2fb68375-eac8-4201-8da5-8cef94059c4f',
+  '1.0.0'
+)
+
 export default {
-  quartersClient: new window.Quarters(quarterOptions)
+  quartersClient: new window.Quarters(quarterOptions),
+  brainCloudClient: window.brainCloudClient,
+  brainCloudWrapper: window.brainCloudWrapper
 }
